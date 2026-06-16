@@ -11,7 +11,8 @@ import SwiftUI
 struct FocalGridApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
+            
         }
     }
 }
