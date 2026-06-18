@@ -15,4 +15,5 @@ extension Color {
     static let themeBlue = Color(red: 0/255, green: 75/255, blue: 134/255) // #004B86 Pantone 301 C
     static let themeClay = Color(red: 164/255, green: 73/255, blue: 61/255) // #A4493D Pantone 7608 C
     static let themeShadow = Color(red: 28/255, green: 31/255, blue: 42/255) // #1C1F2A Pantone 532 C
+    static let themeHardShadow = Color(red: 36/255, green: 34/255, blue: 29/255) // #24221D
 }

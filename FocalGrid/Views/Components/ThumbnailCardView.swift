@@ -40,7 +40,10 @@ struct ThumbnailCardView: View {
         }
         .padding(.vertical, 40)
         .padding(.horizontal, 32)
-        .background(type.themeColor)
+        .background(
+            type.themeColor
+                .shadow(color: .themeShadow, radius: 0, x: 0, y: 6)
+        )
         .padding(.horizontal, 24)
     }
 }
