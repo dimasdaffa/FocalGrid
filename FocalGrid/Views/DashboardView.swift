@@ -26,7 +26,7 @@ struct DashboardView: View {
                 VStack(spacing: 0) {
                     HStack {
                         Text("FocalGrid")
-                            .font(.system(size: 30, weight: .bold))
+                            .font(.system(.largeTitle, weight: .bold))
                             .foregroundColor(Color.themePrimary)
                         Spacer()
                     }
