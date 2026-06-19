@@ -1,5 +1,5 @@
 //
-//  CompositionModel.swift
+//  Composition.swift
 //  FocalGrid
 //
 //  Created by DIMAS DAFFA ERNANDA on 18/06/26.
