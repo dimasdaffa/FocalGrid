@@ -52,7 +52,7 @@ struct DetailCTAView: View {
         .padding(.top, 16)
         .padding(.bottom, 12)
         .padding(.horizontal, 16)
-        .background(Color.themeHardShadow.opacity(0.55))
+        .background(Color.themeHardShadow.opacity(0.55), ignoresSafeAreaEdges: [])
         .overlay(
             Rectangle()
                 .strokeBorder(Color.white.opacity(0.15), lineWidth: 0.52)
