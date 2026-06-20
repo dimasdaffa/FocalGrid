@@ -63,8 +63,9 @@ struct MechanicDetailView: View {
                 totalSteps: totalMechanics,
                 themeColor: themeColor
             )
+            .background(.black)
         }
-        .background(Color.themeShadow.ignoresSafeArea())
+        .background(Color.black.ignoresSafeArea())
         .navigationTitle(mechanic.title)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
