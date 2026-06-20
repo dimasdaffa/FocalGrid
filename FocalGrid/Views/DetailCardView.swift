@@ -7,12 +7,20 @@
 
 import SwiftUI
 
+/// A route object for navigating to a specific mechanic within a composition.
+struct MechanicRoute: Hashable {
+    let mechanicId: String
+    let compositionType: CompositionType
+}
+
 struct DetailCardView: View {
     let type: CompositionType
 
     private var composition: Composition? {
         Composition.mockCompositions.first { $0.type == type }
     }
+
+    @State private var selectedMechanicRoute: MechanicRoute?
 
     var body: some View {
         ScrollView {
@@ -82,12 +90,21 @@ struct DetailCardView: View {
 
                     VStack(spacing: 0) {
                         ForEach(Array(composition.mechanics.enumerated()), id: \.element.id) { index, mechanic in
-                            MechanicRowView(
-                                title: mechanic.title,
-                                subtitle: mechanic.readingTime,
-                                index: index + 1,
-                                type: type
-                            )
+                            Button {
+                                selectedMechanicRoute = MechanicRoute(
+                                    mechanicId: mechanic.id,
+                                    compositionType: type
+                                )
+                            } label: {
+                                MechanicRowView(
+                                    title: mechanic.title,
+                                    subtitle: mechanic.readingTime,
+                                    index: index + 1,
+                                    type: type
+                                )
+                            }
+                            .buttonStyle(.plain)
+
                             if index < composition.mechanics.count - 1 {
                                 Divider()
                                     .padding(.leading, 56)
@@ -121,13 +138,29 @@ struct DetailCardView: View {
                     title: firstMechanic.title,
                     themeColor: type.themeColor,
                     onStartReadingTapped: {
-                        // TODO: Navigate to reading view
+                        selectedMechanicRoute = MechanicRoute(
+                            mechanicId: firstMechanic.id,
+                            compositionType: type
+                        )
                     },
                     onCameraTapped: {
                         // TODO: Open camera view
                     }
                 )
-                .padding(.horizontal,16)
+                .padding(.horizontal, 16)
+            }
+        }
+        .navigationDestination(item: $selectedMechanicRoute) { route in
+            if let composition = Composition.mockCompositions.first(where: { $0.type == route.compositionType }),
+               let mechanicIndex = composition.mechanics.firstIndex(where: { $0.id == route.mechanicId }) {
+                MechanicDetailView(
+                    mechanic: composition.mechanics[mechanicIndex],
+                    mechanicIndex: mechanicIndex + 1,
+                    // +1 for Photographic Breakdown
+                    totalMechanics: composition.mechanics.count + 1,
+                    themeColor: route.compositionType.themeColor,
+                    compositionTitle: route.compositionType.title
+                )
             }
         }
     }
