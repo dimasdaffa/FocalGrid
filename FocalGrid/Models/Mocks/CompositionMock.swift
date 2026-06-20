@@ -30,7 +30,8 @@ extension Composition {
                     readingTime: "1 min",
                     headline: "The magic happens where the lines crash into each other.",
                     bodyContent: "Your viewer's eyes are already waiting there. The four intersections where your grid lines cross are the ultimate target zones. Human physics dictates that **The Eye Level** naturally darts to these **intersection points** before looking anywhere else in the frame.\n\nInstead of guessing, lock your **Golden Target**—be it a subject's sharp looking eye, a faraway lighthouse, or the main focal point of an action scene—directly onto one of these four crossing marks to instantly anchor the narrative.",
-                    imageAsset: nil
+                    imageAsset: nil,
+                    layoutStyle: .textCentered
                 ),
                 GridMechanic(
                     id: "rot_mech_3",
@@ -72,7 +73,8 @@ extension Composition {
                     readingTime: "1 min",
                     headline: "The magic spine sits right inside the eye of the spiral.",
                     bodyContent: "The point where the spiral collapses tightest is called the **Focus Point**. Unlike the four intersections of the Rule of Thirds, you have a single, more nuanced target zone.\n\nYour anchor subject—a person's intense gaze, a far away clock tower—should fall wherever the spiral curls into its smallest curve. Let the background action radiate along the outer curve, fading directly to your primary human subject.\n\nPull it with **internal framing.** The loose end of the spiral creates a natural frame—use it to fold layers of depth, hierarchy, and flow into a viewer's eye in a clockwise or counter-clockwise sweep.",
-                    imageAsset: nil
+                    imageAsset: nil,
+                    layoutStyle: .textCentered
                 ),
                 GridMechanic(
                     id: "gr_mech_3",
@@ -114,7 +116,8 @@ extension Composition {
                     readingTime: "1 min",
                     headline: "Control the pacing by controlling the repetition.",
                     bodyContent: "It doesn't just push your eye. It's **leading it.**\n\nA single bold diagonal creates a line of visual force, guiding the viewer across one clear path from one corner of your frame and guides the viewer directly into the action.\n\nPull it with **internal framing.** The close end of the Visual Check creates a natural anchor for the viewer's eye to land before following the force.",
-                    imageAsset: nil
+                    imageAsset: nil,
+                    layoutStyle: .textCentered
                 ),
                 GridMechanic(
                     id: "dl_mech_3",
@@ -156,7 +159,8 @@ extension Composition {
                     readingTime: "1 min",
                     headline: "The line doesn't always have to be perfectly straight.",
                     bodyContent: "While street rails in a two-lane, straight road, or a path creates an obvious visual funnel, not all lines that serve as guides are that direct.\n\nThe use of only Staircase that have ever been perfectly straight is incredibly rare.\n\nInstead, **curving lines**—a winding river, the curve of a trail, rocky footpath—carry the same leading power. Use an implicit Leading Line—think the direction of a person's gaze, then let the blend of curves create the final depth.",
-                    imageAsset: nil
+                    imageAsset: nil,
+                    layoutStyle: .textCentered
                 ),
                 GridMechanic(
                     id: "ll_mech_3",

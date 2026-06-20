@@ -119,7 +119,7 @@ struct DetailCardView: View {
             .padding(.top, 28)
 
         VStack(spacing: 0) {
-            ForEach(Array(composition.mechanics.enumerated()), id: \.element.id) { index, mechanic in
+            ForEach(Array(viewModel.allMechanics.enumerated()), id: \.element.id) { index, mechanic in
                 Button {
                     viewModel.selectMechanic(id: mechanic.id)
                 } label: {
@@ -132,7 +132,7 @@ struct DetailCardView: View {
                 }
                 .buttonStyle(.plain)
 
-                if index < composition.mechanics.count - 1 {
+                if index < viewModel.allMechanics.count - 1 {
                     Divider()
                         .padding(.leading, 56)
                 }
@@ -140,17 +140,6 @@ struct DetailCardView: View {
         }
         .padding(.horizontal, 20)
         .padding(.top, 12)
-
-        Divider()
-            .padding(.horizontal, 20)
-
-        MechanicRowView(
-            title: "Photographic Breakdown",
-            subtitle: "1 min",
-            index: composition.mechanics.count + 1,
-            type: viewModel.type
-        )
-        .padding(.horizontal, 20)
     }
 
     // MARK: - CTA Section

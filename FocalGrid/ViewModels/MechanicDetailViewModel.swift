@@ -44,4 +44,13 @@ final class MechanicDetailViewModel {
     var totalSteps: Int {
         mechanics.count
     }
+    
+    // MARK: - Actions
+    
+    func goToPreviousPage() {
+        let prevIndex = currentIndex - 1
+        if prevIndex >= 0 {
+            currentPageID = mechanics[prevIndex].id
+        }
+    }
 }

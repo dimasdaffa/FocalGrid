@@ -22,7 +22,7 @@ final class DetailCardViewModel {
     }
     
     var firstMechanic: GridMechanic? {
-        composition?.mechanics.first
+        allMechanics.first
     }
     
     var firstMechanicTitle: String {
@@ -30,7 +30,30 @@ final class DetailCardViewModel {
     }
     
     var mechanicCount: Int {
-        composition?.mechanics.count ?? 0
+        allMechanics.count
+    }
+    
+    var allMechanics: [GridMechanic] {
+        guard let composition = composition else { return [] }
+        var list = composition.mechanics
+        
+        // Convert breakdown into a GridMechanic
+        let breakdownBody = composition.breakdown.layers.map { layer in
+            "• **\(layer.title):** \(layer.description)"
+        }.joined(separator: "\n\n")
+        
+        let breakdownMechanic = GridMechanic(
+            id: "\(composition.type.rawValue)_breakdown",
+            title: "Photographic Breakdown",
+            readingTime: "1 min",
+            headline: composition.breakdown.headline,
+            bodyContent: breakdownBody,
+            imageAsset: composition.breakdown.imageAsset,
+            layoutStyle: .imageTop
+        )
+        
+        list.append(breakdownMechanic)
+        return list
     }
     
     // MARK: - Init
@@ -55,12 +78,13 @@ final class DetailCardViewModel {
     
     /// Resolves a route into the data needed by MechanicDetailView.
     static func resolveMechanicRoute(_ route: MechanicRoute) -> (mechanics: [GridMechanic], startIndex: Int, themeColor: Color, title: String)? {
-        guard let composition = Composition.mockCompositions.first(where: { $0.type == route.compositionType }),
-              let mechanicIndex = composition.mechanics.firstIndex(where: { $0.id == route.mechanicId })
-        else { return nil }
+        let tempViewModel = DetailCardViewModel(type: route.compositionType)
+        let mechanics = tempViewModel.allMechanics
+        
+        guard let mechanicIndex = mechanics.firstIndex(where: { $0.id == route.mechanicId }) else { return nil }
         
         return (
-            mechanics: composition.mechanics,
+            mechanics: mechanics,
             startIndex: mechanicIndex,
             themeColor: route.compositionType.themeColor,
             title: route.compositionType.title

@@ -19,6 +19,12 @@ struct Composition: Identifiable, Codable {
 
 // MARK: - Sub-Models
 
+enum MechanicLayoutStyle: String, Codable {
+    case imageBottom
+    case imageTop
+    case textCentered
+}
+
 struct GridMechanic: Identifiable, Codable {
     let id: String
     let title: String
@@ -26,6 +32,7 @@ struct GridMechanic: Identifiable, Codable {
     let headline: String
     let bodyContent: String
     let imageAsset: String?
+    var layoutStyle: MechanicLayoutStyle = .imageBottom
 }
 
 struct PhotographicBreakdown: Codable {
