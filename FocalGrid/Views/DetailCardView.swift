@@ -36,7 +36,7 @@ struct DetailCardView: View {
                                 Text("\(composition.keyIdeasCount)")
                                     .font(.title2)
                                     .fontWeight(.bold)
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(Color.themePrimary)
                             }
                             Spacer()
                             Image(systemName: "text.book.closed.fill")
@@ -54,7 +54,7 @@ struct DetailCardView: View {
                                 Text(composition.durationText)
                                     .font(.title2)
                                     .fontWeight(.bold)
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(Color.themePrimary)
                             }
                             Spacer()
                             Image(systemName: "clock.fill")
@@ -69,14 +69,14 @@ struct DetailCardView: View {
 
                     Text(composition.description)
                         .font(.body)
-                        .foregroundColor(.primary)
+                        .foregroundColor(Color.themePrimary)
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
 
                     Text("Grid Mechanics")
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(.primary)
+                        .foregroundColor(Color.themePrimary)
                         .padding(.horizontal, 20)
                         .padding(.top, 28)
 
