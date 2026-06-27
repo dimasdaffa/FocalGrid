@@ -12,15 +12,15 @@ struct ThumbnailCardView: View {
     var onLearnTapped: () -> Void
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 40) {
+        VStack(alignment: .leading, spacing: 32) {
             Text(LocalizedStringKey(type.cardSubtitle))
                 .font(.title3)
                 .bold()
+                .frame(height: 60, alignment: .topLeading)
             
             Image(type.gridImageName)
                 .resizable()
                 .scaledToFit()
-            
             
             Text(type.title)
                 .font(.largeTitle)
@@ -42,7 +42,7 @@ struct ThumbnailCardView: View {
         .padding(.horizontal, 32)
         .background(
             type.themeColor
-                .shadow(color: .themeShadow, radius: 0, x: 0, y: 6)
+                .shadow(color: .themeHardShadow, radius: 0, x: 0, y: 6)
         )
         .padding(.horizontal, 24)
     }

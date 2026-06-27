@@ -21,7 +21,7 @@ enum CompositionType: String, CaseIterable, Codable {
         case .goldenRatio: return "Golden Ratio"
         case .diagonalLines: return "Diagonal Lines"
         case .leadingLines: return "Leading Lines"
-        case .symmetry: return "Symmetry"
+        case .symmetry: return "Symmetry Balance"
         }
     }
     
