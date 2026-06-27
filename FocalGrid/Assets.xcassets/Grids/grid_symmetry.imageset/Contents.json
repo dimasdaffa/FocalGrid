@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Frame.png",
+      "filename" : "symmetry.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Frame 1.png",
+      "filename" : "symmetry 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Frame 2.png",
+      "filename" : "symmetry 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

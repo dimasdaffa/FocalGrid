@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "diagonal-removebg-preview.png",
+      "filename" : "diagonal.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "diagonal-removebg-preview 1.png",
+      "filename" : "diagonal 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "diagonal-removebg-preview 2.png",
+      "filename" : "diagonal 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 extension Composition {
     static let mockCompositions: [Composition] = [
         Composition(
@@ -182,7 +181,49 @@ extension Composition {
                     CompositionLayer(title: "The Dark Foreground Silhouette", description: "masks the shadows and defines edges where all lines converge, pulling the viewer deeper into the frame.")
                 ]
             )
+        ),
+        Composition(
+            type: .symmetry,
+            description: "Ever wonder why a perfectly centered subject can look incredibly powerful, while others just look like an amateur mistake? The secret lies in absolute intentionality—it’s about locking a flawless geometric order into your canvas.\n\nThe Symmetrical Balance framework trades the dynamic tension of off-center rules for total visual equilibrium. By splitting your frame directly down the dead center, you create an unshakeable sense of **stability, gravity, and formal dignity** that anchors the viewer’s gaze instantly.\n\nReady to lock in absolute, unshakeable order?",
+            keyIdeasCount: 4,
+            durationText: "1-2 min",
+            mechanics: [
+                GridMechanic(
+                    id: "sym_mech_1",
+                    title: "The Central Axis",
+                    readingTime: "1 min",
+                    headline: "Go ahead, center your subject.\nBut make it absolutely perfect.",
+                    bodyContent: "When you look through your viewfinder, forget about the off-center rules for a moment. Imagine a sharp, singular line slicing your frame exactly down the middle.\n\n• **The Centered Trap:** Plonking an object vaguely in the middle looks like an accident. If your alignment is off by even a few pixels, the human eye instantly flags the flaw, creating visual discomfort.\n\n• **The Pro Commitment:** Commit fully to the geometry. Lock your primary subject dead-center along the vertical axis, forcing both halves of the canvas to balance each other out with mathematical authority.",
+                    imageAsset: "mock_sym_axis"
+                ),
+                GridMechanic(
+                    id: "sym_mech_2",
+                    title: "How to Use It",
+                    readingTime: "1 min",
+                    headline: "The magic splits right down the geometric center.",
+                    bodyContent: "The line where the left and right halves mirror each other is your **Power Spine**. Unlike off-center compositions that make the eyes dart around, symmetry instantly freezes the gaze right in the middle, creating an immediate sense of weight, dignity, and absolute stillness.\n\nHuman intuition naturally loves balance. By treating your screen like a literal mirror, you turn a simple layout into a powerful, authoritative statement. What happens on the left must structurally echo what happens on the right.",
+                    imageAsset: nil,
+                    layoutStyle: .textCentered
+                ),
+                GridMechanic(
+                    id: "sym_mech_3",
+                    title: "When to Deploy The Rule",
+                    readingTime: "1 min",
+                    headline: "Different scenarios demand absolute stability. Choose your alignments carefully before clicking the shutter.",
+                    bodyContent: "**ARCHITECTURE & MONUMENTS** — Perfect for grand cathedrals, symmetrical corridors, or minimalist facades. Let the structural leading lines converge dead-center to evoke a sense of scale, power, and permanence.\n\n**REFLECTIONS & WATER** — When shooting over completely still lakes, glass windows, or puddles. Lock the horizon line across the horizontal center to create a mesmerizing, parallel world.\n\n**MINIMALIST SINGLE SUBJECTS** — Use this when a lone subject stands against a clean canvas. Centering isolates the object entirely, transforming it into an undeniable focal point.",
+                    imageAsset: "mock_sym_landscape"
+                )
+            ],
+            breakdown: PhotographicBreakdown(
+                headline: "Why does this shot work? Let's dissect the composition layer by layer.",
+                imageAsset: "image_7c58aa",
+                photographer: "dimas daffa",
+                layers: [
+                    CompositionLayer(title: "The Central Flagpole", description: "acts as a rigid vertical axis cutting straight through the frame, anchor-weighting the entire visual right down the middle line."),
+                    CompositionLayer(title: "The Organic Billow", description: "of the red-and-white flag breaks up the stiff geometric symmetry with natural movement, preventing the center composition from feeling too artificial or static."),
+                    CompositionLayer(title: "The Heavy Negative Space", description: "of the overcast sky eliminates all surrounding background noise, completely forcing the viewer’s eye to lock onto the color contrast and symbolic presence of the subject.")
+                ]
+            )
         )
     ]
 }
-
