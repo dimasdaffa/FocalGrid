@@ -28,15 +28,13 @@ struct MechanicDetailView: View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: 0) {
                 ForEach(viewModel.mechanics, id: \.id) { mechanic in
-                    mechanicPage(mechanic)
-                        .containerRelativeFrame(.vertical, alignment: .topLeading)
-                        .clipped()
+                    mechanicPageContainer(mechanic)
                         .id(mechanic.id)
                 }
             }
             .scrollTargetLayout()
         }
-        .scrollTargetBehavior(.paging)
+        .scrollTargetBehavior(.viewAligned)
         .scrollPosition(id: $viewModel.currentPageID)
         .safeAreaInset(edge: .top) {
             ProgressBarView(
@@ -59,13 +57,6 @@ struct MechanicDetailView: View {
                         viewModel.goToPreviousPage()
                     }) {
                         Image(systemName: "chevron.left")
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(.white.opacity(0.85))
-                            .frame(width: 36, height: 36)
-                            .background(
-                                Circle()
-                                    .fill(Color.white.opacity(0.1))
-                            )
                     }
                 }
             }
@@ -73,15 +64,37 @@ struct MechanicDetailView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: { dismiss() }) {
                     Image(systemName: "xmark")
-                        .font(.system(size: 12, weight: .bold))
-                        .foregroundColor(.white.opacity(0.5))
-                        .frame(width: 36, height: 36)
-                        .background(
-                            Circle()
-                                .stroke(Color.white.opacity(0.15), lineWidth: 1)
-                        )
                 }
             }
+        }
+    }
+
+    // MARK: - Page Container
+
+    @ViewBuilder
+    private func mechanicPageContainer(_ mechanic: GridMechanic) -> some View {
+        if mechanic.imageAsset != nil {
+            // Full-size page: opening image or photographic breakdown
+            mechanicPage(mechanic)
+                .containerRelativeFrame(.vertical, alignment: .topLeading)
+                .clipped()
+        } else {
+            // Text-only page: shorter frame with bottom spill
+            mechanicPage(mechanic)
+                .containerRelativeFrame(.vertical, alignment: .topLeading) { height, _ in
+                    height - 80
+                }
+                .mask(
+                    VStack(spacing: 0) {
+                        Color.white
+                        LinearGradient(
+                            colors: [.white, .white.opacity(0)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                        .frame(height: 100)
+                    }
+                )
         }
     }
 
@@ -89,29 +102,32 @@ struct MechanicDetailView: View {
 
     @ViewBuilder
     private func mechanicPage(_ mechanic: GridMechanic) -> some View {
-        VStack(alignment: .leading, spacing: 0) {
-            switch mechanic.layoutStyle {
-            case .imageBottom:
-                headlineView(mechanic)
-                bodyView(mechanic)
-                Spacer(minLength: 16)
-                imageView(mechanic)
-                
-            case .imageTop:
-                imageView(mechanic)
-                    .padding(.top, 36)
-                headlineView(mechanic, topPadding: 16) // Less padding since image is above
-                bodyView(mechanic)
-                Spacer(minLength: 16)
-                
-            case .textCentered:
-                Spacer(minLength: 40)
-                headlineView(mechanic)
-                bodyView(mechanic)
-                Spacer(minLength: 60)
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(alignment: .leading, spacing: 0) {
+                switch mechanic.layoutStyle {
+                case .imageBottom:
+                    headlineView(mechanic)
+                    bodyView(mechanic)
+                    Spacer(minLength: 16)
+                    imageView(mechanic)
+                    
+                case .imageTop:
+                    imageView(mechanic)
+                        .padding(.top, 36)
+                    headlineView(mechanic, topPadding: 16)
+                    bodyView(mechanic)
+                    Spacer(minLength: 16)
+                    
+                case .textCentered:
+                    Spacer(minLength: 40)
+                    headlineView(mechanic)
+                    bodyView(mechanic)
+                    Spacer(minLength: 60)
+                }
             }
+            .padding(.horizontal, 24)
         }
-        .padding(.horizontal, 24)
+        .scrollBounceBehavior(.basedOnSize)
     }
 
     // MARK: - View Builders

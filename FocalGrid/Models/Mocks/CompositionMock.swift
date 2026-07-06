@@ -38,7 +38,7 @@ extension Composition {
                     readingTime: "1 min",
                     headline: "Different scenarios demand different grids. Choose your rules carefully before clicking the shutter.",
                     bodyContent: "**LANDSCAPES** — Lock the horizon line precisely onto the bottom third to amplify a dramatic sky, or shift it to the top third to expose foreground textures.\n\n**ACTION & MOTION** — If a subject is moving from left to right, frame them strictly on the left third line. Always give your subject *\"space to run into.\"*\n\n**PORTRAITS** — Align the spine or weight of the subject's body with a clean vertical line to create a powerful, *artistic asymmetry*.",
-                    imageAsset: "mock_rot_landscape"
+                    imageAsset: nil
                 )
             ],
             breakdown: PhotographicBreakdown(
@@ -81,7 +81,7 @@ extension Composition {
                     readingTime: "1 min",
                     headline: "Complex scenes demand organic balance. Here's when to unleash the grid for the spiral.",
                     bodyContent: "**ARCHITECTURE & CURVES** — Perfect. By snaking a staircase, archway, corridors, or row-angle brick walls. Let the structural lines mirror the swirling motion.\n\n**STREET & STORYTELLING** — Lock a subject into a daily environment that would echo an editorial style—something far more nuanced than standard. Let the leading curves construct a natural storyline along the outer curve, fading directly to your primary human subject.\n\n**CLOSE-UP PORTRAITS** — Align the spiral's curl onto face's defining trait: the subject's dominant eye, letting their hair or shoulders follow the swooping outer curve.",
-                    imageAsset: "mock_gr_landscape"
+                    imageAsset: nil
                 )
             ],
             breakdown: PhotographicBreakdown(
@@ -124,7 +124,7 @@ extension Composition {
                     readingTime: "1 min",
                     headline: "Dynamic moments require dynamic boundaries. Slash the canvas when the narrative's speed and chaos demand it.",
                     bodyContent: "**SPORTS & RACING** — Ideal for starting gates, running tracks, or cars in motion. Align the direction of acceleration below the action even further.\n\n**URBAN PATTERNS** — Look for repeating rows of windows, architecture, and staircases. A staircase is a built-in spiral. Turn static concrete into a rhythmic perspective.\n\n**REPEATING CROWD** — Frame a mix of people, soldiers, or objects standing in sequence. Shift position to capture them all on single clear **Diagonal** line.",
-                    imageAsset: "mock_dl_landscape"
+                    imageAsset: nil
                 )
             ],
             breakdown: PhotographicBreakdown(
@@ -167,7 +167,7 @@ extension Composition {
                     readingTime: "1 min",
                     headline: "Urban geometry demands structured pathways. Slash the frame to build an inescapable perspective.",
                     bodyContent: "**STREETS & ALLEYS** — Long corridors, train tracks, or narrow city blocks. Let the natural architecture build the depth on your behalf.\n\n**NATURAL PATHS** — Look for rivers, rows of shops, or distant trails. Guide the user through nature's visual trail.\n\n**VANITY SHOTS** — Combine shadows with a carefully constructed leading line. Use an implied line—think the direction of a person's gaze, then let the blend of curves create the final depth.",
-                    imageAsset: "mock_ll_landscape"
+                    imageAsset: nil
                 )
             ],
             breakdown: PhotographicBreakdown(
@@ -211,7 +211,7 @@ extension Composition {
                     readingTime: "1 min",
                     headline: "Different scenarios demand absolute stability. Choose your alignments carefully before clicking the shutter.",
                     bodyContent: "**ARCHITECTURE & MONUMENTS** — Perfect for grand cathedrals, symmetrical corridors, or minimalist facades. Let the structural leading lines converge dead-center to evoke a sense of scale, power, and permanence.\n\n**REFLECTIONS & WATER** — When shooting over completely still lakes, glass windows, or puddles. Lock the horizon line across the horizontal center to create a mesmerizing, parallel world.\n\n**MINIMALIST SINGLE SUBJECTS** — Use this when a lone subject stands against a clean canvas. Centering isolates the object entirely, transforming it into an undeniable focal point.",
-                    imageAsset: "mock_sym_landscape"
+                    imageAsset: nil
                 )
             ],
             breakdown: PhotographicBreakdown(
