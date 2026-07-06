@@ -26,10 +26,15 @@ struct MechanicDetailView: View {
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(spacing: 0) {
+            // VStack (not Lazy) so the current page's spill overlay reliably draws
+            // on top of the next page's peek via zIndex. Page counts are small.
+            VStack(spacing: 0) {
                 ForEach(viewModel.mechanics, id: \.id) { mechanic in
                     mechanicPageContainer(mechanic)
                         .id(mechanic.id)
+                        // Current page sits above its neighbour so its bottom spill
+                        // can dim the peeking next page.
+                        .zIndex(mechanic.id == viewModel.currentPageID ? 1 : 0)
                 }
             }
             .scrollTargetLayout()
@@ -79,22 +84,28 @@ struct MechanicDetailView: View {
                 .containerRelativeFrame(.vertical, alignment: .topLeading)
                 .clipped()
         } else {
-            // Text-only page: shorter frame with bottom spill
+            // Text-only page: the shorter frame lets the next page peek through at the
+            // bottom. The gradient fades this page's tail and the peek into black
+            // (Deepstash-style spill). Only the current page draws it, and because it
+            // lives on the container it scrolls with the content — incoming pages are
+            // never dimmed by a fixed overlay.
             mechanicPage(mechanic)
                 .containerRelativeFrame(.vertical, alignment: .topLeading) { height, _ in
                     height - 80
                 }
-                .mask(
-                    VStack(spacing: 0) {
-                        Color.white
-                        LinearGradient(
-                            colors: [.white, .white.opacity(0)],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                        .frame(height: 100)
+                .overlay(alignment: .bottom) {
+                    if mechanic.id == viewModel.currentPageID {
+                        // Flat 50% scrim over the next-page peek — no gradient. Sits in
+                        // the empty area below the current text, so it only dims the
+                        // peeking content. Offset + ignoresSafeArea carry it all the way
+                        // to the physical bottom edge (through the home-indicator inset).
+                        Color.black.opacity(0.5)
+                            .frame(height: 180)
+                            .offset(y: 120)
+                            .allowsHitTesting(false)
+                            .ignoresSafeArea(edges: .bottom)
                     }
-                )
+                }
         }
     }
 
