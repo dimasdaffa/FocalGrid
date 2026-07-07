@@ -24,15 +24,7 @@ final class DetailCardViewModel {
     var firstMechanic: GridMechanic? {
         allMechanics.first
     }
-    
-    var firstMechanicTitle: String {
-        firstMechanic?.title ?? ""
-    }
-    
-    var mechanicCount: Int {
-        allMechanics.count
-    }
-    
+
     /// Teaching cards only — what the swipe-paged reader shows.
     var teachingMechanics: [GridMechanic] {
         composition?.mechanics ?? []

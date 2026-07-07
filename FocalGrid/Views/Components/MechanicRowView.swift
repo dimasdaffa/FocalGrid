@@ -10,14 +10,7 @@ import SwiftUI
 struct MechanicRowView: View {
     let title: String
     let subtitle: String
-    let index: Int
-    
-    let type: CompositionType
-    
-    private var composition: Composition? {
-        Composition.mockCompositions.first { $0.type == type }
-    }
-    
+
     var body: some View {
         HStack(spacing: 12) {
             Circle()
@@ -48,8 +41,6 @@ struct MechanicRowView: View {
 #Preview {
     MechanicRowView(
         title: "Photographic Breakdown",
-        subtitle: "1 min",
-        index: 1,
-        type: .ruleOfThirds
+        subtitle: "1 min"
     )
 }

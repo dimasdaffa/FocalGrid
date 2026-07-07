@@ -125,9 +125,7 @@ struct DetailCardView: View {
                 } label: {
                     MechanicRowView(
                         title: mechanic.title,
-                        subtitle: mechanic.readingTime,
-                        index: index + 1,
-                        type: viewModel.type
+                        subtitle: mechanic.readingTime
                     )
                 }
                 .buttonStyle(.plain)
