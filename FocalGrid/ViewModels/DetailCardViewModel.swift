@@ -33,16 +33,21 @@ final class DetailCardViewModel {
         allMechanics.count
     }
     
-    var allMechanics: [GridMechanic] {
-        guard let composition = composition else { return [] }
-        var list = composition.mechanics
-        
-        // Convert breakdown into a GridMechanic
+    /// Teaching cards only — what the swipe-paged reader shows.
+    var teachingMechanics: [GridMechanic] {
+        composition?.mechanics ?? []
+    }
+
+    /// The photographic breakdown as a GridMechanic. Shown on its own screen,
+    /// not in the paged reader (it's too long to fit one card).
+    var breakdownMechanic: GridMechanic? {
+        guard let composition = composition else { return nil }
+
         let breakdownBody = composition.breakdown.layers.map { layer in
             "• **\(layer.title):** \(layer.description)"
         }.joined(separator: "\n\n")
-        
-        let breakdownMechanic = GridMechanic(
+
+        return GridMechanic(
             id: "\(composition.type.rawValue)_breakdown",
             title: "Photographic Breakdown",
             readingTime: "1 min",
@@ -51,9 +56,11 @@ final class DetailCardViewModel {
             imageAsset: composition.breakdown.imageAsset,
             layoutStyle: .imageTop
         )
-        
-        list.append(breakdownMechanic)
-        return list
+    }
+
+    /// Teaching cards + breakdown — the full list shown in DetailCardView's row list.
+    var allMechanics: [GridMechanic] {
+        teachingMechanics + (breakdownMechanic.map { [$0] } ?? [])
     }
     
     // MARK: - Init
@@ -80,7 +87,7 @@ final class DetailCardViewModel {
     static func resolveMechanicRoute(_ route: MechanicRoute) -> (mechanics: [GridMechanic], startIndex: Int, themeColor: Color, title: String)? {
         let tempViewModel = DetailCardViewModel(type: route.compositionType)
         let mechanics = tempViewModel.allMechanics
-        
+
         guard let mechanicIndex = mechanics.firstIndex(where: { $0.id == route.mechanicId }) else { return nil }
         
         return (

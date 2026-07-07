@@ -39,7 +39,11 @@ struct MechanicDetailView: View {
             }
             .scrollTargetLayout()
         }
-        .scrollTargetBehavior(.viewAligned)
+        // .always limits each swipe to a single section (Deepstash-style paging);
+        // a fast flick can no longer skip from the first section to the last.
+        // Strict one-by-one paging. Every card fits one screen (the long breakdown lives
+        // on its own screen now), so a single global behavior is all that's needed.
+        .scrollTargetBehavior(.viewAligned(limitBehavior: .always))
         .scrollPosition(id: $viewModel.currentPageID)
         .safeAreaInset(edge: .top) {
             ProgressBarView(
@@ -138,7 +142,10 @@ struct MechanicDetailView: View {
             }
             .padding(.horizontal, 24)
         }
-        .scrollBounceBehavior(.basedOnSize)
+        // ponytail: inner scroll on only for the last page (the long breakdown). Middle
+        // cards are one screen, so their inner scroll would just steal flicks from the
+        // pager. On the breakdown, drag to scroll — a fast flick is eaten by the pager.
+        .scrollDisabled(mechanic.id != viewModel.mechanics.last?.id)
     }
 
     // MARK: - View Builders
